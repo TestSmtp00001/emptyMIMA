@@ -86,7 +86,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               </p>
               <button
                 onClick={() => setHasAgreed(null)}
-                className="mt-3 px-4 py-2 bg-white border border-red-200 text-gray-900 rounded-lg text-sm font-medium"
+                className="mt-3 px-4 py-2 bg-white border border-gray-200 text-gray-900 rounded-lg text-sm font-medium"
               >
                 Try Again
               </button>
