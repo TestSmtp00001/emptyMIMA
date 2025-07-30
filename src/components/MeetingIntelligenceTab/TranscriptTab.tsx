@@ -93,10 +93,10 @@ const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
             Click to upload or drag and drop
           </p>
           <p className="text-xs text-gray-500 mb-2 px-2">
-            Supported: .txt, .vtt, .doc, .docx, .pdf, .mp3, .m4a, .wav, .aac, .avi, .mov, .mp4
+            Supported file types: .txt, .vtt, .doc, .docx, .pdf, .mp3, .m4a, .wav, .aac, .avi, .mov, .mp4
           </p>
           
-          <p className="text-xs text-gray-600 mb-3">
+          <p className="text-xs text-gray-500 mb-2 px-2">
             Maximum file size: 1GB
           </p>
           
