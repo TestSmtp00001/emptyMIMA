@@ -102,7 +102,7 @@ const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
           
           {/* Quality Message Inside Drop Area */}
           <div className="p-2 sm:p-3 bg-blue-50 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+            <AlertCircle className="w-4 h-4 text-[#FF8E1C] flex-shrink-0" />
             <p className="text-xs text-blue-800">
               Quality affects summary, follow-up and coaching
             </p>
