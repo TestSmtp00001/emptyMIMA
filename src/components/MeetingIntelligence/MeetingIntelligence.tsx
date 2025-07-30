@@ -30,9 +30,11 @@ import FollowUpTab from '../MeetingIntelligenceTab/FollowUpTab';
 import AnalyticsTab from '../MeetingIntelligenceTab/AnalyticsTab';
 import CoachingTab from '../MeetingIntelligenceTab/CoachingTab';
 import AskSamTab from '../MeetingIntelligenceTab/AskSamTab';
+import RecordingPage from '../RecordingPage/RecordingPage';
 
 const MeetingIntelligence: React.FC = () => {
   const [activeTab, setActiveTab] = useState('transcript');
+  const [showRecordingPage, setShowRecordingPage] = useState(false);
   const [showActionMenu, setShowActionMenu] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   
@@ -61,7 +63,7 @@ const MeetingIntelligence: React.FC = () => {
   const renderTabContent = () => {
     switch (activeTab) {
       case 'transcript':
-        return <TranscriptTab />;
+        return <TranscriptTab onRecordClick={() => setShowRecordingPage(true)} />;
       case 'summary':
         return <SummaryTab />;
       case 'followup':
@@ -76,6 +78,10 @@ const MeetingIntelligence: React.FC = () => {
         return null;
     }
   };
+
+  if (showRecordingPage) {
+    return <RecordingPage onBack={() => setShowRecordingPage(false)} />;
+  }
 
   return (
     <div className="min-h-screen h-full bg-white flex flex-col">

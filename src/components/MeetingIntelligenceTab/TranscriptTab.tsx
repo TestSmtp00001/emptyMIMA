@@ -1,7 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { Upload, FileText, AlertCircle, Mic } from 'lucide-react';
 
-const TranscriptTab: React.FC = () => {
+interface TranscriptTabProps {
+  onRecordClick: () => void;
+}
+
+const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -49,7 +53,10 @@ const TranscriptTab: React.FC = () => {
     <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-4 sm:pb-6 h-full flex flex-col overflow-hidden">
       <div className="flex flex-col">
         {/* Record Button */}
-        <button className="w-full max-w-md mx-auto mb-3 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-sm flex items-center justify-center space-x-2">
+        <button 
+          onClick={onRecordClick}
+          className="w-full max-w-md mx-auto mb-3 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-sm flex items-center justify-center space-x-2"
+        >
           <Mic className="w-4 h-4" />
           <span>Record</span>
         </button>
