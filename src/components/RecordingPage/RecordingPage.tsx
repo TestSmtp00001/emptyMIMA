@@ -153,7 +153,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               <div className="text-xs text-yellow-600">
                 <span className="font-medium">4h 23m</span> remaining
               </div>
-              <button className="px-3 py-1 bg-[#605BFF] text-yellow-800 rounded text-xs font-medium hover:bg-yellow-300 transition-colors">
+              <button className="px-3 py-1 bg-[#605BFF] text-white rounded text-xs font-medium hover:bg-yellow-300 transition-colors">
                 Upgrade
               </button>
             </div>
