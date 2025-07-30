@@ -39,7 +39,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
         </button>
-        <h1 className="text-lg font-semibold text-gray-900">back</h1>
+        <h1 className="text-lg font-semibold text-gray-900">Back</h1>
       </div>
 
       {/* Content */}
