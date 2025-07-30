@@ -77,7 +77,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
 
           {/* Recording Denied */}
           {hasAgreed === false && (
-            <div className="bg-withe border border-red-200 rounded-lg p-4 text-center">
+            <div className="bg-withe border border-gray-200 rounded-lg p-4 text-center">
               <h3 className="text-base font-medium text-gray-900 mb-2">
                 Recording Not Permitted
               </h3>
