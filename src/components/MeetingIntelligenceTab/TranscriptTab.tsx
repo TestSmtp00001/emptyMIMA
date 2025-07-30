@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, FileText, AlertCircle, Mic } from 'lucide-react';
+import { Upload, FileText, AlertTriangle, Mic } from 'lucide-react';
 
 interface TranscriptTabProps {
   onRecordClick: () => void;
@@ -102,7 +102,7 @@ const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
           
           {/* Quality Message Inside Drop Area */}
           <div className="p-2 sm:p-3 bg-blue-50 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="w-4 h-4 text-[#FF8E1C] flex-shrink-0" />
+            <AlertTriangle className="w-4 h-4 text-[#FF8E1C] flex-shrink-0" />
             <p className="text-xs text-blue-800">
               Quality affects summary, follow-up and coaching
             </p>
