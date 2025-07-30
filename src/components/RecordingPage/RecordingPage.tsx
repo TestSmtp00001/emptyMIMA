@@ -81,7 +81,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               <h3 className="text-base font-medium text-red-800 mb-2">
                 Recording Not Permitted
               </h3>
-              <p className="text-sm text-red-600">
+              <p className="text-xs text-red-600">
                 Please ensure all participants agree to recording before proceeding.
               </p>
               <button
