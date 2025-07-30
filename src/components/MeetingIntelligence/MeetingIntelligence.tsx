@@ -38,6 +38,10 @@ const MeetingIntelligence: React.FC = () => {
   const [showActionMenu, setShowActionMenu] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   
+  const handleUploadClick = () => {
+    setActiveTab('transcript');
+  };
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -65,15 +69,15 @@ const MeetingIntelligence: React.FC = () => {
       case 'transcript':
         return <TranscriptTab onRecordClick={() => setShowRecordingPage(true)} />;
       case 'summary':
-        return <SummaryTab />;
+        return <SummaryTab onUploadClick={handleUploadClick} />;
       case 'followup':
-        return <FollowUpTab />;
+        return <FollowUpTab onUploadClick={handleUploadClick} />;
       case 'analytics':
-        return <AnalyticsTab />;
+        return <AnalyticsTab onUploadClick={handleUploadClick} />;
       case 'coaching':
-        return <CoachingTab />;
+        return <CoachingTab onUploadClick={handleUploadClick} />;
       case 'asksam':
-        return <AskSamTab />;
+        return <AskSamTab onUploadClick={handleUploadClick} />;
       default:
         return null;
     }
