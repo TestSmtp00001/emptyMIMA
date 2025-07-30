@@ -47,9 +47,6 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
         <div className="max-w-md mx-auto space-y-6">
           {/* Welcome Message */}
           <div className="text-center bg-blue-50 rounded-lg p-4">
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">
-              Enterprise-Grade Meeting Intelligence
-            </h2>
             <p className="text-sm text-gray-600">
               Get enterprise-grade client meetings summary, follow-up letter and coaching in one click!
             </p>
