@@ -145,7 +145,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
           )}
 
           {/* Trial Information */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div className="border border-yellow-200 rounded-lg p-4">
             <p className="text-sm text-yellow-700 mb-3">
               Your Free Trial subscription provides 5 hours of recording time. Upgrade to a paid subscription to unlock unlimited recordings and features.
             </p>
