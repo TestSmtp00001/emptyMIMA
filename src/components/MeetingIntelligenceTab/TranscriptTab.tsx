@@ -104,7 +104,7 @@ const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
           <div className="p-2 sm:p-3 bg-blue-50 rounded-lg flex items-center space-x-2">
             <AlertTriangle className="w-4 h-4 text-[#FF8E1C] flex-shrink-0" />
             <p className="text-xs text-blue-800">
-              Quality affects summary, follow-up and coaching
+               The quality of the transcript directly affects the meeting summary, follow-up letter and coaching
             </p>
           </div>
         </div>
