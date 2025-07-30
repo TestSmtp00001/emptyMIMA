@@ -67,7 +67,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
                 </button>
                 <button
                   onClick={() => handleAgreement(false)}
-                  className="flex-1 py-3 px-4 bg-white border border-[#605BFF] text-white rounded-lg font-medium transition-colors"
+                  className="flex-1 py-3 px-4 bg-white border border-[#605BFF] text-[#605BFF] rounded-lg font-medium transition-colors"
                 >
                   No
                 </button>
