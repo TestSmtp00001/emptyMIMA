@@ -159,7 +159,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
             </div>
             
             {/* Progress Bar */}
-            <div className="mt-2 w-full bg-yellow-200 rounded-full h-2">
+            <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
               <div className="bg-[#605BFF] h-2 rounded-full" style={{ width: '87%' }}></div>
             </div>
           </div>
