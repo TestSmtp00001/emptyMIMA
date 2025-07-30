@@ -163,19 +163,6 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '87%' }}></div>
             </div>
           </div>
-
-          {/* Recording Tips */}
-          <div className="bg-gray-50 rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-900 mb-2">
-              Recording Tips
-            </h3>
-            <ul className="text-xs text-gray-600 space-y-1">
-              <li>• Ensure all participants are close to the microphone</li>
-              <li>• Minimize background noise for better transcription</li>
-              <li>• Speak clearly and avoid talking over each other</li>
-              <li>• Recording will automatically save when stopped</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
