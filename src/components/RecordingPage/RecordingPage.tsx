@@ -150,7 +150,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               Your Free Trial subscription provides 5 hours of recording time. Upgrade to a paid subscription to unlock unlimited recordings and features.
             </p>
             <div className="flex items-center justify-between">
-              <div className="text-xs text-yellow-600">
+              <div className="text-xs text-[#605BFF]">
                 <span className="font-medium">4h 23m</span> remaining
               </div>
               <button className="px-3 py-1 bg-[#605BFF] text-white rounded text-xs font-medium hover:bg-yellow-300 transition-colors">
