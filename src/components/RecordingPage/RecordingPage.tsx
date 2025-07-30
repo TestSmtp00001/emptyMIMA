@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Mic, MicOff, Square } from 'lucide-react';
+import { ArrowLeft, Mic, MicOff, Square, Pause, Play } from 'lucide-react';
 
 interface RecordingPageProps {
   onBack: () => void;
@@ -8,6 +8,7 @@ interface RecordingPageProps {
 const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
   const [hasAgreed, setHasAgreed] = useState<boolean | null>(null);
   const [isRecording, setIsRecording] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
 
   const handleAgreement = (agreed: boolean) => {
@@ -15,12 +16,20 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
     if (agreed) {
       // Start recording logic would go here
       setIsRecording(true);
+      setIsPaused(false);
       // Start timer (in a real app, you'd use setInterval)
     }
   };
 
-  const toggleRecording = () => {
-    setIsRecording(!isRecording);
+  const handlePause = () => {
+    setIsPaused(!isPaused);
+  };
+
+  const handleStop = () => {
+    setIsRecording(false);
+    setIsPaused(false);
+    setRecordingTime(0);
+    onBack();
   };
 
   const formatTime = (seconds: number) => {
@@ -32,10 +41,10 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
   return (
     <div className="h-full bg-white flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 flex items-center">
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-1 flex items-center">
         <button
           onClick={onBack}
-          className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors mr-3"
+          className="flex items-center px-3 py-2 rounded-full hover:bg-gray-100 transition-colors mr-3 gap-2"
         >
           <ArrowLeft className="w-4 h-4 text-gray-700" />
           <h1 className="text-xs font-semibold text-gray-900">Back</h1>
@@ -44,7 +53,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
-        <div className="max-w-md mx-auto space-y-6">
+        <div className="max-w-md mx-auto space-y-16">
           {/* Welcome Message */}
           <div className="text-center bg-blue-50 rounded-lg p-4">
             <p className="text-xs text-gray-600">
@@ -99,13 +108,16 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               {/* Recording Status */}
               <div className="text-center">
                 <div className={`inline-flex items-center space-x-2 px-4 py-2 rounded-full ${
-                  isRecording ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'
+                  isRecording && !isPaused ? 'bg-red-100 text-red-700' : 
+                  isPaused ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700'
                 }`}>
                   <div className={`w-2 h-2 rounded-full ${
-                    isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-400'
+                    isRecording && !isPaused ? 'bg-red-500 animate-pulse' : 
+                    isPaused ? 'bg-yellow-500' : 'bg-gray-400'
                   }`}></div>
                   <span className="text-sm font-medium">
-                    {isRecording ? 'Recording' : 'Ready to Record'}
+                    {isRecording && !isPaused ? 'Recording' : 
+                     isPaused ? 'Paused' : 'Ready to Record'}
                   </span>
                 </div>
                 
@@ -118,35 +130,42 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
                 )}
               </div>
 
-              {/* Record Button */}
-              <div className="flex justify-center">
+              {/* Control Buttons */}
+              <div className="flex justify-center space-x-4">
                 <button
-                  onClick={toggleRecording}
-                  className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-200 ${
-                    isRecording
-                      ? 'bg-red-500 hover:bg-red-600 shadow-lg'
-                      : 'bg-[#605BFF] hover:bg-[#4B46CC] shadow-lg'
+                  onClick={handlePause}
+                  className={`w-32 px-6 py-3 rounded-lg flex items-center justify-center space-x-2 transition-all duration-200 ${
+                    isPaused
+                      ? 'bg-[#605BFF] hover:bg-[#4B46CC] text-white'
+                      : 'bg-yellow-500 hover:bg-yellow-600 text-white'
                   }`}
                 >
-                  {isRecording ? (
-                    <Square className="w-8 h-8 text-white" />
+                  {isPaused ? (
+                    <Play className="w-5 h-5" />
                   ) : (
-                    <Mic className="w-8 h-8 text-white" />
+                    <Pause className="w-5 h-5" />
                   )}
+                  <span className="font-medium">
+                    {isPaused ? 'Resume' : 'Pause'}
+                  </span>
+                </button>
+                
+                <button
+                  onClick={handleStop}
+                  className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg flex items-center space-x-2 transition-all duration-200"
+                >
+                  <Square className="w-5 h-5" />
+                  <span className="font-medium">Stop</span>
                 </button>
               </div>
 
-              <div className="text-center">
-                <p className="text-sm text-gray-600">
-                  {isRecording ? 'Tap to stop recording' : 'Tap to start recording'}
-                </p>
-              </div>
+
             </div>
           )}
 
           {/* Trial Information */}
-          <div className="border border-yellow-200 rounded-lg p-4">
-            <p className="text-xs text-yellow-700 mb-3">
+          <div className="border border-[#605BFF] rounded-lg p-4">
+            <p className="text-xs text-[#605BFF] mb-2">
               Your Free Trial subscription provides 5 hours of recording time. Upgrade to a paid subscription to unlock unlimited recordings and features.
             </p>
             <div className="flex items-center justify-between">
@@ -159,7 +178,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
             </div>
             
             {/* Progress Bar */}
-            <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
+            <div className="mt-1 w-full bg-gray-200 rounded-full h-2">
               <div className="bg-[#605BFF] h-2 rounded-full" style={{ width: '87%' }}></div>
             </div>
           </div>
