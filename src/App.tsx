@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { LayoutDashboard, Brain, Menu, X, Home, MessageSquare } from 'lucide-react';
+import { LayoutDashboard, Brain, Menu, X, Home, MessageSquare, Info, AlertTriangle } from 'lucide-react';
 import MeetingIntelligence from './components/MeetingIntelligence';
 import Dashboard from './components/Dashboard/Dashboard';
 
@@ -30,14 +30,22 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="h-screen bg-gray-50 flex flex-col overflow-hidden">
       {/* Mobile App Header */}
       <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-center shadow-sm">
-        <h1 className="text-lg font-semibold text-gray-900">{getPageTitle()}</h1>
+        <div className="flex items-center space-x-2">
+          <h1 className="text-lg font-semibold text-gray-900">{getPageTitle()}</h1>
+          {activeView === 'meeting-intelligence' && (
+              <>
+                <Info className="w-4 h-4 text-gray-400" />
+                <AlertTriangle className="w-4 h-4 text-orange-400" />
+              </>
+            )}
+        </div>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 pb-20">
+      <div className="flex-1 overflow-hidden" style={{height: 'calc(100vh - 140px)'}}>
         {renderContent()}
       </div>
 

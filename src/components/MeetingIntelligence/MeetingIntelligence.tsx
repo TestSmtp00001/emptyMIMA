@@ -78,78 +78,7 @@ const MeetingIntelligence: React.FC = () => {
   };
 
   return (
-    <div className="h-full bg-white flex flex-col">
-      {/* Compact Header */}
-      <div className="bg-white border-b border-gray-200 px-4 py-1.5 flex-shrink-0">
-        {/* Top Row: Meeting Info + Actions */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center">
-            <span className="text-xs font-medium text-gray-900 flex items-center">
-              <Edit className="w-4 h-4 text-[#605BFF] mr-2" />
-              Driving Rapid Revenue Growth
-            </span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <button className="p-1 bg-[#605BFF] text-white rounded" title="Add Transcript">
-              <Plus className="w-4 h-4" />
-            </button>
-            <button className="p-1 border border-[#605BFF] text-[#605BFF] rounded" title="Link">
-              <Link className="w-4 h-4" />
-            </button>
-            <button className="p-1 border border-[#605BFF] text-[#605BFF] rounded" title="File">
-              <FileText className="w-4 h-4" />
-            </button>
-            {/*<button className="p-1 text-[#605BFF] hover:bg-gray-100 rounded">
-              <Share2 className="w-4 h-4" />
-            </button>*/}
-            <button className="p-1 text-[#605BFF] hover:bg-gray-100 rounded">
-              <MoreVertical className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-        
-        {/* Bottom Row: Audio Player */}
-        <div className="flex items-center space-x-2">
-          <button className="w-6 h-6 bg-[#605BFF] rounded-full flex items-center justify-center text-white">
-            <Play className="w-2.5 h-2.5 ml-0.5" fill="currentColor" />
-          </button>
-          
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-gray-600 font-mono">1:22</span>
-              <span className="text-xs text-gray-600 font-mono">6:04</span>
-            </div>
-            <div className="w-full bg-gray-300 rounded-full h-1.5">
-              <div className="bg-[#605BFF] h-1.5 rounded-full" style={{ width: '22%' }}></div>
-            </div>
-          </div>
-          
-          <button className="flex items-center justify-center h-6 w-6 text-gray-600">
-            <Volume2 className="w-4 h-4" />
-          </button>
-          
-          <button 
-            onClick={() => setShowActionMenu(!showActionMenu)}
-            className="p-1 text-gray-600 relative"
-          >
-            <MoreHorizontal className="w-4 h-4" />
-          </button>
-          
-          {showActionMenu && (
-            <div className="absolute right-4 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 min-w-[180px]">
-              <button className="w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center space-x-2">
-                <Download className="w-4 h-4" />
-                <span>Download</span>
-              </button>
-              <button className="w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center space-x-2">
-                <Gauge className="w-4 h-4" />
-                <span>Playback Speed</span>
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
+    <div className="min-h-screen h-full bg-white flex flex-col">
       {/* Tab Navigation - Icon Only */}
       <div className="bg-white border-b border-gray-200 flex-shrink-0">
         <div className="px-4 py-2">
@@ -178,8 +107,10 @@ const MeetingIntelligence: React.FC = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="flex-1 overflow-hidden">
-        {renderTabContent()}
+      <div className="flex-1 overflow-hidden h-full">
+        <div className="h-full overflow-hidden">
+          {renderTabContent()}
+        </div>
       </div>
       
       {/* Back to Top Button */}
