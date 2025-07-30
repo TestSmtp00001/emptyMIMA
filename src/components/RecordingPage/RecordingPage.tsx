@@ -47,7 +47,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
         <div className="max-w-md mx-auto space-y-6">
           {/* Welcome Message */}
           <div className="text-center bg-blue-50 rounded-lg p-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-xs text-gray-600">
               Get enterprise-grade client meetings summary, follow-up letter and coaching in one click!
             </p>
           </div>
@@ -81,7 +81,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
               <h3 className="text-base font-medium text-red-800 mb-2">
                 Recording Not Permitted
               </h3>
-              <p className="text-xs text-red-600">
+              <p className="text-sm text-red-600">
                 Please ensure all participants agree to recording before proceeding.
               </p>
               <button
