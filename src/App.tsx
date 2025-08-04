@@ -82,38 +82,38 @@ function App() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-1 safe-area-bottom z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-100 px-3 py-2 safe-area-bottom z-50 shadow-lg">
         {/* More Menu */}
         {showMoreMenu && (
-          <div ref={moreMenuRef} className="absolute bottom-full right-4 mb-2 bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[150px]">
+          <div ref={moreMenuRef} className="absolute bottom-full right-4 mb-3 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-xl shadow-xl py-1 min-w-[150px]">
             <button
               onClick={() => handleMoreMenuClick('Meeting List')}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors rounded-lg mx-1"
             >
               Meeting List
             </button>
             <button
               onClick={() => handleMoreMenuClick('Meeting Preparation')}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors rounded-lg mx-1"
             >
               Meeting Preparation
             </button>
             <button
               onClick={() => handleMoreMenuClick('Tasks')}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors rounded-lg mx-1"
             >
               Tasks
             </button>
           </div>
         )}
         
-        <div className="grid grid-cols-5 gap-0 items-center">
+        <div className="grid grid-cols-5 gap-1 items-center">
           <button
             onClick={() => setActiveView('dashboard')}
-            className={`flex flex-col items-center py-1 px-1 rounded-lg transition-colors ${
+            className={`flex flex-col items-center py-2 px-2 rounded-xl transition-all duration-200 ${
               activeView === 'dashboard'
-                ? 'text-[#605BFF]'
-                : 'text-gray-500'
+                ? 'text-[#605BFF] bg-[#605BFF]/10'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
             }`}
           >
             <Home className="w-5 h-5 mb-1" />
@@ -122,10 +122,10 @@ function App() {
           
           <button
             onClick={() => setActiveView('transcript')}
-            className={`flex flex-col items-center py-1 px-1 rounded-lg transition-colors ${
+            className={`flex flex-col items-center py-2 px-2 rounded-xl transition-all duration-200 ${
               activeView === 'transcript'
-                ? 'text-[#605BFF]'
-                : 'text-gray-500'
+                ? 'text-[#605BFF] bg-[#605BFF]/10'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
             }`}
           >
             <FileText className="w-5 h-5 mb-1" />
@@ -134,7 +134,7 @@ function App() {
           
           <button
             onClick={() => setActiveView('recording')}
-            className="flex flex-col items-center py-1 px-1 rounded-lg transition-colors text-red-500"
+            className="flex flex-col items-center py-2 px-2 rounded-xl transition-all duration-200 text-red-500 hover:text-red-600 hover:bg-red-50"
           >
             <PlusCircle className="w-6 h-6 mb-1" />
             <span className="text-xs font-medium">Record</span>
@@ -142,10 +142,10 @@ function App() {
           
           <button
             onClick={() => setActiveView('meeting-intelligence')}
-            className={`flex flex-col items-center py-1 px-1 rounded-lg transition-colors ${
+            className={`flex flex-col items-center py-2 px-2 rounded-xl transition-all duration-200 ${
               activeView === 'meeting-intelligence'
-                ? 'text-[#605BFF]'
-                : 'text-gray-500'
+                ? 'text-[#605BFF] bg-[#605BFF]/10'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
             }`}
           >
             <MessageSquare className="w-5 h-5 mb-1" />
@@ -154,7 +154,7 @@ function App() {
           
           <button
              onClick={() => setShowMoreMenu(!showMoreMenu)}
-             className="flex flex-col items-center py-1 px-1 rounded-lg transition-colors text-gray-500"
+             className="flex flex-col items-center py-2 px-2 rounded-xl transition-all duration-200 text-gray-500 hover:text-gray-700 hover:bg-gray-50"
            >
              <MoreVertical className="w-5 h-5 mb-1" />
              <span className="text-xs font-medium">More</span>
