@@ -55,9 +55,9 @@ const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
         {/* Record Button */}
         <button 
           onClick={onRecordClick}
-          className="w-full max-w-md mx-auto mb-3 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-sm flex items-center justify-center space-x-2"
+          className="w-32 mx-auto mb-3 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-sm flex items-center justify-center space-x-2"
         >
-          <Mic className="w-4 h-4" />
+          <Mic className="w-3 h-3" />
           <span>Record</span>
         </button>
         
