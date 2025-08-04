@@ -6,7 +6,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import RecordingPage from './components/RecordingPage/RecordingPage';
 
 function App() {
-  const [activeView, setActiveView] = useState<'dashboard' | 'meeting-intelligence' | 'transcript' | 'recording'>('dashboard');
+  const [activeView, setActiveView] = useState<'dashboard' | 'meeting-intelligence' | 'transcript' | 'recording'>('meeting-intelligence');
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
   const renderContent = () => {
