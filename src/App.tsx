@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LayoutDashboard, Brain, Menu, X, Home, MessageSquare, Info, AlertTriangle, PlusCircle, FileText, MoreVertical } from 'lucide-react';
 import MeetingIntelligence from './components/MeetingIntelligence';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -8,6 +8,23 @@ import RecordingPage from './components/RecordingPage/RecordingPage';
 function App() {
   const [activeView, setActiveView] = useState<'dashboard' | 'meeting-intelligence' | 'transcript' | 'recording'>('meeting-intelligence');
   const [showMoreMenu, setShowMoreMenu] = useState(false);
+  const moreMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (moreMenuRef.current && !moreMenuRef.current.contains(event.target as Node)) {
+        setShowMoreMenu(false);
+      }
+    };
+
+    if (showMoreMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showMoreMenu]);
 
   const renderContent = () => {
     switch (activeView) {
@@ -68,7 +85,7 @@ function App() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-1 safe-area-bottom z-50">
         {/* More Menu */}
         {showMoreMenu && (
-          <div className="absolute bottom-full right-4 mb-2 bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[150px]">
+          <div ref={moreMenuRef} className="absolute bottom-full right-4 mb-2 bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[150px]">
             <button
               onClick={() => handleMoreMenuClick('Meeting List')}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -120,7 +137,7 @@ function App() {
             className="flex flex-col items-center py-1 px-1 rounded-lg transition-colors text-red-500"
           >
             <PlusCircle className="w-6 h-6 mb-1" />
-            <span className="text-xs font-medium">Create</span>
+            <span className="text-xs font-medium">Record</span>
           </button>
           
           <button
