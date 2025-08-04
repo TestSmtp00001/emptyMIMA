@@ -41,7 +41,7 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
   return (
     <div className="h-full bg-white flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-1 flex items-center">
+      <div className="sticky top-0 z-50 bg-white px-4 py-1 flex items-center">
         <button
           onClick={onBack}
           className="flex items-center px-3 py-2 rounded-full hover:bg-gray-100 transition-colors mr-3 gap-2"
@@ -168,13 +168,8 @@ const RecordingPage: React.FC<RecordingPageProps> = ({ onBack }) => {
             <p className="text-xs text-[#605BFF] mb-2">
               Your Free Trial subscription provides 5 hours of recording time. Upgrade to a paid subscription to unlock unlimited recordings and features.
             </p>
-            <div className="flex items-center justify-between">
-              <div className="text-xs text-[#605BFF]">
-                <span className="font-medium">4h 23m</span> remaining
-              </div>
-              <button className="px-3 py-1 bg-[#605BFF] text-white rounded text-xs font-medium hover:bg-yellow-300 transition-colors">
-                Upgrade
-              </button>
+            <div className="text-xs text-[#605BFF]">
+              <span className="font-medium">4h 23m</span> remaining
             </div>
             
             {/* Progress Bar */}
