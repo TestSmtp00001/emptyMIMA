@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, FileText, AlertTriangle, Mic } from 'lucide-react';
+import { Upload, FileText, AlertTriangle } from 'lucide-react';
 
 interface TranscriptTabProps {
   onRecordClick: () => void;
@@ -52,19 +52,7 @@ const TranscriptTab: React.FC<TranscriptTabProps> = ({ onRecordClick }) => {
   return (
     <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-4 sm:pb-6 h-full flex flex-col overflow-hidden">
       <div className="flex flex-col">
-        {/* Record Button */}
-        <button 
-          onClick={onRecordClick}
-          className="w-32 mx-auto mb-3 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-sm flex items-center justify-center space-x-2"
-        >
-          <Mic className="w-3 h-3" />
-          <span>Record</span>
-        </button>
-        
-        {/* Or Text */}
-        <div className="text-center mb-4">
-          <span className="text-gray-500 text-sm">or</span>
-        </div>
+
         
         {/* Drop Area */}
         <div
