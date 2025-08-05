@@ -269,7 +269,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="h-full bg-gray-50 w-full flex flex-col">
       {/* Header */}
-      <header className="sticky top-[52px] z-40 bg-white border-b border-gray-200 px-4 pt-0 pb-2 flex-shrink-0">
+      <header className="bg-white border-b border-gray-200 px-4 pt-0 pb-2 flex-shrink-0">
         {/* Filter Dropdowns - Compact Design */}
         <div className="space-y-2">
           {/* Time Range Selector */}
