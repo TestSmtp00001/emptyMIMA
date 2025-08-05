@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { LayoutDashboard, Brain, Menu, X, Home, MessageSquare, Info, AlertTriangle, PlusCircle, FileText, MoreVertical, Target, Phone, Share2, BarChart3, CheckSquare, Puzzle, User, CreditCard, Lightbulb } from 'lucide-react';
+import { LayoutList, Brain, Menu, CalendarClock , Home, MessageSquare, Info, AlertTriangle, PlusCircle, FileText, MoreVertical, Target, Phone, Share2, BarChart3, CheckSquare, Puzzle, User, CreditCard, Lightbulb, MoreHorizontal } from 'lucide-react';
 import MeetingIntelligence from './components/MeetingIntelligence';
 import Dashboard from './components/Dashboard/Dashboard';
 import RecordingPage from './components/RecordingPage/RecordingPage';
@@ -8,15 +8,20 @@ import RecordingPage from './components/RecordingPage/RecordingPage';
 function App() {
   const [activeView, setActiveView] = useState<'dashboard' | 'meeting-intelligence' | 'transcript' | 'recording'>('meeting-intelligence');
   const [showMoreMenu, setShowMoreMenu] = useState(false);
+  const [showHeaderMenu, setShowHeaderMenu] = useState(false);
   const [dragStartY, setDragStartY] = useState(0);
   const [dragCurrentY, setDragCurrentY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const moreMenuRef = useRef<HTMLDivElement>(null);
+  const headerMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (moreMenuRef.current && !moreMenuRef.current.contains(event.target as Node)) {
         setShowMoreMenu(false);
+      }
+      if (headerMenuRef.current && !headerMenuRef.current.contains(event.target as Node)) {
+        setShowHeaderMenu(false);
       }
     };
 
@@ -38,7 +43,7 @@ function App() {
        }
      };
 
-    if (showMoreMenu) {
+    if (showMoreMenu || showHeaderMenu) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
@@ -52,7 +57,7 @@ function App() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [showMoreMenu, isDragging, dragCurrentY, dragStartY]);
+  }, [showMoreMenu, showHeaderMenu, isDragging, dragCurrentY, dragStartY]);
 
   const renderContent = () => {
     switch (activeView) {
@@ -89,18 +94,77 @@ function App() {
     setShowMoreMenu(false);
   };
 
+  const handleHeaderMenuClick = (item: string) => {
+    console.log(`Header menu clicked: ${item}`);
+    setShowHeaderMenu(false);
+  };
+
   return (
     <div className="h-screen bg-gray-50 flex flex-col overflow-hidden">
       {/* Mobile App Header */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-center shadow-sm">
-        <div className="flex items-center space-x-2">
-          <h1 className="text-lg font-semibold text-gray-900">{getPageTitle()}</h1>
-          {activeView === 'meeting-intelligence' && (
-              <>
-                <Info className="w-4 h-4 text-gray-400" />
-                <AlertTriangle className="w-4 h-4 text-orange-400" />
-              </>
-            )}
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-0.5 flex items-center justify-between shadow-sm">
+        {/* Left side - Sam Avatar */}
+        <div className="flex items-center">
+          <img src="/src/assets/sam-avatar.svg" alt="Sam" className="w-16 h-16 rounded-full" />
+        </div>
+        
+        {/* Right side - User Avatar and More Menu */}
+        <div className="flex items-center space-x-3 relative">
+          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+            <User className="w-5 h-5 text-gray-600" />
+          </div>
+          <button
+            onClick={() => setShowHeaderMenu(!showHeaderMenu)}
+            className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <MoreHorizontal className="w-5 h-5 text-gray-600" />
+          </button>
+          
+          {/* Header Dropdown Menu */}
+          {showHeaderMenu && (
+            <div 
+              ref={headerMenuRef}
+              className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-60"
+            >
+              <button
+                onClick={() => handleHeaderMenuClick('Onboarding')}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Onboarding
+              </button>
+              <button
+                onClick={() => handleHeaderMenuClick('Profile')}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Profile
+              </button>
+              <button
+                onClick={() => handleHeaderMenuClick('Buy More Credit')}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Buy More Credit
+              </button>
+              <button
+                onClick={() => handleHeaderMenuClick('Change Password')}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Change Password
+              </button>
+              <button
+                onClick={() => handleHeaderMenuClick('Switch Account')}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Switch Account
+              </button>
+              <hr className="my-1 border-gray-200" />
+              <button
+                onClick={() => handleHeaderMenuClick('Sign Out')}
+                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -162,12 +226,26 @@ function App() {
                 <span className="text-xs font-medium text-center">Income Goals</span>
               </button>
               <button
+                onClick={() => handleMoreMenuClick('Meeting Calendar')}
+                className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
+              >
+                <CalendarClock  className="w-6 h-6 mb-2" />
+                <span className="text-xs font-medium text-center">Meeting Calendar</span>
+              </button>
+              <button
                 onClick={() => handleMoreMenuClick('Meeting List')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <LayoutDashboard className="w-6 h-6 mb-2" />
+                <LayoutList className="w-6 h-6 mb-2" />
                 <span className="text-xs font-medium text-center">Meeting List</span>
               </button>
+              <button
+                onClick={() => handleMoreMenuClick('Tasks')}
+                className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
+              >
+                <CheckSquare className="w-6 h-6 mb-2" />
+                <span className="text-xs font-medium text-center">Tasks</span>
+              </button>            
               <button
                 onClick={() => handleMoreMenuClick('Hubspot Calls')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
@@ -187,22 +265,15 @@ function App() {
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
                 <BarChart3 className="w-6 h-6 mb-2" />
-                <span className="text-xs font-medium text-center">Hubspot Report</span>
-              </button>
-              <button
-                onClick={() => handleMoreMenuClick('Tasks')}
-                className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
-              >
-                <CheckSquare className="w-6 h-6 mb-2" />
-                <span className="text-xs font-medium text-center">Tasks</span>
-              </button>
+                <span className="text-xs font-medium text-center">Hubspot Reports</span>
+              </button>  
               <button
                 onClick={() => handleMoreMenuClick('Integrations')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
                 <Puzzle className="w-6 h-6 mb-2" />
                 <span className="text-xs font-medium text-center">Integrations</span>
-              </button>
+              </button>            
               <button
                 onClick={() => handleMoreMenuClick('User')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
