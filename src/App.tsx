@@ -222,77 +222,77 @@ function App() {
                 onClick={() => handleMoreMenuClick('Income Goals')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <Target className="w-6 h-6 mb-2" />
+                <Target className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Income Goals</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Meeting Calendar')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <CalendarClock  className="w-6 h-6 mb-2" />
-                <span className="text-xs font-medium text-center">Meeting Calendar</span>
+                <CalendarClock  className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
+                <span className="text-xs font-medium text-center">Calendar</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Meeting List')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <LayoutList className="w-6 h-6 mb-2" />
+                <LayoutList className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Meeting List</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Tasks')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <CheckSquare className="w-6 h-6 mb-2" />
+                <CheckSquare className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Tasks</span>
               </button>            
               <button
                 onClick={() => handleMoreMenuClick('Hubspot Calls')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <Phone className="w-6 h-6 mb-2" />
+                <Phone className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Hubspot Calls</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Hubspot Shared')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <Share2 className="w-6 h-6 mb-2" />
+                <Share2 className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Hubspot Shared</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Hubspot Report')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <BarChart3 className="w-6 h-6 mb-2" />
+                <BarChart3 className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Hubspot Reports</span>
               </button>  
               <button
                 onClick={() => handleMoreMenuClick('Integrations')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <Puzzle className="w-6 h-6 mb-2" />
+                <Puzzle className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Integrations</span>
               </button>            
               <button
                 onClick={() => handleMoreMenuClick('User')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <User className="w-6 h-6 mb-2" />
+                <User className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">User</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Billing')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <CreditCard className="w-6 h-6 mb-2" />
+                <CreditCard className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Billing</span>
               </button>
               <button
                 onClick={() => handleMoreMenuClick('Solution')}
                 className="flex flex-col items-center py-3 px-2 text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
               >
-                <Lightbulb className="w-6 h-6 mb-2" />
+                <Lightbulb className="w-6 h-6 mb-2" style={{color: '#605BFF'}} />
                 <span className="text-xs font-medium text-center">Solution</span>
                </button>
                </div>
